@@ -68,6 +68,7 @@ grammar Syntax {
 	      token unary:sym«length» { 'L' <.kw-rest> }
 	      token unary:sym«dump»   { 'D' <.kw-rest> }
 	      token unary:sym«output» { 'O' <.kw-rest> }
+	      token unary:sym«ascii»  { 'A' <.kw-rest> }
 
 	#| Binary functions take two arguments.
 	rule function:«binary»        { <binary> <expr> <expr> }
@@ -136,6 +137,7 @@ class SyntaxAction {
 	method unary:sym«length»($/) { make 'L' }
 	method unary:sym«dump»($/)   { make 'D' }
 	method unary:sym«output»($/) { make 'O' }
+	method unary:sym«ascii»($/)  { make 'A' }
 
 	method function:«binary»($/) { make Knight::Function.new: $<binary>.made, |$<expr>».made }
 	method binary:sym«+»($/)     { make ~$<sym> }

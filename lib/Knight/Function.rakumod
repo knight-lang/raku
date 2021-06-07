@@ -78,6 +78,9 @@ register 'O', {
 	$result;
 };
 
+#| Performs `chr` on numbers and `ord` on strings.
+register 'A', { $^a.run.ascii }
+
 #| Adds the two operands together.
 register '+', { $^a.run.add: $^b.run };
 

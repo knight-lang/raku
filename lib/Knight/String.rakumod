@@ -22,6 +22,14 @@ method mul(Knight::Value $rhs, --> ::?CLASS) {
 	::?CLASS.new: $!value x $rhs.Int
 }
 
+#| Gets the ord of the first chr
+method ascii(--> Knight::Value) {
+	require Knight::Number;
+
+	die "Cannot call 'ascii' on empty strings" unless $!value;
+	Knight::Number.new: $!value.ord
+}
+
 #| Gets an internal representation of the class; used in debugging.
 method gist(--> Str) {
 	"String($!value)";

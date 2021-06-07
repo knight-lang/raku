@@ -48,3 +48,11 @@ method mod(Knight::Value $rhs, --> ::?CLASS) {
 method pow(Knight::Value $rhs, --> ::?CLASS) {
 	::?CLASS.new: ($!value ** $rhs.Int).Int
 }
+
+#| Gets the chr of the class
+method ascii(--> Knight::Value) {
+	require Knight::String;
+
+	die "Invalid ASCII number $!value" unless 0 < $!value && $!value <= 127;
+	Knight::String.new: $!value.chr
+}
