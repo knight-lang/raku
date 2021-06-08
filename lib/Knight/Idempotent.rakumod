@@ -6,7 +6,7 @@ use Knight::Value;
 #| - `::T` type should be the builtin type, such as `Bool` or `Str`.
 #| - `&cmp` should be a function that takes two `T`s, and returns the first's ordering to the second.
 #| - `&eql` should be a function that takes two `T`s, and returns whether they are equal.
-unit role Knight::TypedValue[::T, &cmp, &eql] does Knight::Value;
+unit role Knight::Idempotent[::T, &cmp, &eql] does Knight::Value;
 
 #| The value that the implementor has
 #|
@@ -41,5 +41,5 @@ method Bool(--> Bool) is pure { ?$!value }
 #| Converts `self` to an integer by converting `$!value` to an `Int`.
 method Int(--> Int) is pure { $!value.Int }
 
-#| Running a `TypedValue` simply returns `self`.
+#| Running a `Idempotent` simply returns `self`.
 method run(--> Knight::Value) is pure { self }

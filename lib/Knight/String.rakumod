@@ -1,8 +1,8 @@
-use Knight::TypedValue;
+use Knight::Idempotent;
 use Knight::Value;
 
 #| The String class in Knight.
-unit class Knight::String does Knight::TypedValue[Str, * cmp *, * eq *];
+unit class Knight::String does Knight::Idempotent[Str, * cmp *, * eq *];
 
 #| Converts `self` to an integer by stripping leading whitespace, then taking as many sequential digits as possible.
 #|

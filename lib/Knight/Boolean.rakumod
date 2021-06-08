@@ -1,7 +1,7 @@
-use Knight::TypedValue;
+use Knight::Idempotent;
 
 #| The Boolean class within Knight.
-unit class Knight::Boolean does Knight::TypedValue[Bool, * <=> *, * == *];
+unit class Knight::Boolean does Knight::Idempotent[Bool, * <=> *, * == *];
 
 #| Returns either `true` or `false`, depending on whether we are empty.
 method Str(--> Str) is pure {

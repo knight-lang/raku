@@ -1,4 +1,4 @@
-use Knight::TypedValue;
+use Knight::Idempotent;
 use Knight::Value;
 
 #| The number type in Knight.
@@ -7,7 +7,7 @@ use Knight::Value;
 #|
 #| Because implementations are allowed to define the maximum and minimum values, I've chosen to use Raku's
 #| `Int` type, as it allows for arbitrary-precision arithmetic.
-unit class Knight::Number does Knight::TypedValue[Int, * <=> *, * == *];
+unit class Knight::Number does Knight::Idempotent[Int, * <=> *, * == *];
 
 #| Gets an internal representation of the class; used in debugging.
 method gist(--> Str) {

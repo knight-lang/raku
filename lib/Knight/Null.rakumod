@@ -1,5 +1,5 @@
 use Knight::Value;
-use Knight::TypedValue;
+use Knight::Idempotent;
 
 #| The "null" type within Knight.
 unit class Knight::Null does Knight::Value;
