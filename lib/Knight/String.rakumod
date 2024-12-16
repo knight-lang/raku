@@ -32,5 +32,5 @@ method ascii(--> Knight::Value) {
 
 #| Gets an internal representation of the class; used in debugging.
 method gist(--> Str) {
-	"String($!value)";
+	'"' ~ $!value.subst('[\\"]', '\\' ~ *) ~ '"'
 }

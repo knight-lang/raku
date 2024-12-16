@@ -9,6 +9,6 @@ method Str(--> Str) is pure {
 }
 
 #| Gets an internal representation of the class; used in debugging.
-method gist(--> Str) {
-	"Boolean($.Str)";
+method gist(--> Str) is pure {
+	$.Str;
 }

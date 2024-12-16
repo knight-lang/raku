@@ -10,8 +10,8 @@ my ::?CLASS \INSTANCE = ::?CLASS.bless; # ::?CLASS.bless;
 #| Creates a new Null instance.
 method new(--> ::?CLASS) is pure { INSTANCE }
 
-#| Simply returns `"null"`.
-method Str(--> 'null') is pure { }
+#| Simply returns `""`.
+method Str(--> '') is pure { }
 
 #| Simply returns `0`.
 method Int(--> 0) is pure { }
@@ -33,6 +33,4 @@ multi method eql(::?CLASS $, --> True) is pure { }
 method run(--> Knight::Value) is pure { self }
 
 #| Gets an internal representation of the class; used in debugging.
-method gist(--> Str) {
-	"Null()";
-}
+method gist(--> 'null') is pure { }

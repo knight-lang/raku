@@ -11,7 +11,7 @@ unit class Knight::Number does Knight::Idempotent[Int, * <=> *, * == *];
 
 #| Gets an internal representation of the class; used in debugging.
 method gist(--> Str) {
-	"Number($.Str)";
+	$.Str;
 }
 
 #| Converts `$rhs` to an `Int`, then adds it to `self`, returning a new Number.
