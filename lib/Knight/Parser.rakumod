@@ -21,7 +21,7 @@ grammar Syntax {
 	#| - Normal whitespace and newlines (`\s` and `\n`)
 	#| - All parenthesis (`(`, `)`, `{`, `}`, `[`, and `]`) and the colon `:`.
 	#| - Comments, which start with a `#` and go until end of line.
-	token ws { [ <[(){}[\]:\s\n]> | '#' \N* \n? ]* }
+	token ws { [ <[():\s\n]> | '#' \N* \n? ]* }
 
 	#| A helper token used to discard trailing uppercase letters in keyword functions.
 	token kw-rest { <[A..Z]>* }
@@ -69,6 +69,10 @@ grammar Syntax {
 	      token unary:sym«dump»   { 'D' <.kw-rest> }
 	      token unary:sym«output» { 'O' <.kw-rest> }
 	      token unary:sym«ascii»  { 'A' <.kw-rest> }
+	      token unary:sym«negate» { '~' }
+	      token unary:sym«box»    { ',' }
+	      token unary:sym«head»   { '[' }
+	      token unary:sym«tail»   { ']' }
 
 	#| Binary functions take two arguments.
 	rule function:«binary»        { <binary> <expr> <expr> }
@@ -138,6 +142,10 @@ class SyntaxAction {
 	method unary:sym«dump»($/)   { make 'D' }
 	method unary:sym«output»($/) { make 'O' }
 	method unary:sym«ascii»($/)  { make 'A' }
+	method unary:sym«negate»($/) { make '~' }
+	method unary:sym«box»($/)    { make ',' }
+	method unary:sym«head»($/)   { make '[' }
+	method unary:sym«tail»($/)   { make ']' }
 
 	method function:«binary»($/) { make Knight::Function.new: $<binary>.made, |$<expr>».made }
 	method binary:sym«+»($/)     { make ~$<sym> }

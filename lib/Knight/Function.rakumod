@@ -61,6 +61,8 @@ register 'D', {
 	}
 }
 
+register '~', { Knight::Number.new: -.Int };
+
 #| Prints the given value out, returning the original value.
 #|
 #| If the argument does not end with `\`, a trailing newline will be printed.
