@@ -14,6 +14,10 @@ method gist(--> Str) {
 	$.Str;
 }
 
+method List(--> List) {
+	List.new: |$!value
+}
+
 #| Converts `$rhs` to an `Int`, then adds it to `self`, returning a new Number.
 method add(Knight::Value $rhs, --> ::?CLASS) {
 	::?CLASS.new: $!value + $rhs.Int

@@ -39,6 +39,7 @@ grammar Syntax {
 	      token literal:sym«number»     { \d+ }
 	      token literal:sym«string»     { '"' [.|\n]*? '"' | "'" [.|\n]*? "'" }
 	      token literal:sym«null»       { 'N' <.kw-rest> }
+	      token literal:sym«empty-list» { '@' }
 	      token literal:sym«boolean»    { (<[TF]>) <.kw-rest> }
 
 	#| In Knight, everything that is not a literal is a function, including things like `;` and `=`.
@@ -126,6 +127,7 @@ class SyntaxAction {
 	method literal:sym«string»($/)     { make Knight::String.new: $/.Str.substr(1, *-1) }
 	method literal:sym«null»($/)       { make Knight::Null.new }
 	method literal:sym«boolean»($/)    { make Knight::Boolean.new: $/[0] eq 'T' }
+	method literal:sym«empty-list»($/) { make Knight::List.new }
 
 	method function:«nullary»($/)  { make Knight::Function.new: $<nullary>.made }
 	method nullary:sym«prompt»($/) { make 'P' }

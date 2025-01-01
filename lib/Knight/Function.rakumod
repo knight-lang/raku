@@ -4,6 +4,7 @@ use Knight::String;
 use Knight::Boolean;
 use Knight::Number;
 use Knight::Null;
+use Knight::List;
 use Knight::NonIdempotent;
 
 #| The function type within Knight.
@@ -62,6 +63,7 @@ register 'D', {
 }
 
 register '~', { Knight::Number.new: -.Int };
+register ',', { Knight::List.new: .run };
 
 #| Prints the given value out, returning the original value.
 #|
